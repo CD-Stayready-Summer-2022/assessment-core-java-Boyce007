@@ -11,6 +11,7 @@ public abstract class Pet implements Animal {
     public Pet() {
         name = "";
         age = 0;
+
     }
 
     /**
@@ -39,6 +40,12 @@ public abstract class Pet implements Animal {
     public Pet(String name, int age) {
         this.name = name;
         this.age =age;
+    }
+
+    public Pet(String name, Integer age, PetOwner owner) {
+        this.name = name;
+        this.age = age;
+        this.owner = owner;
     }
 
     /**

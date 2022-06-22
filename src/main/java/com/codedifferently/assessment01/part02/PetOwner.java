@@ -1,24 +1,46 @@
 package com.codedifferently.assessment01.part02;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class PetOwner {
     /**
      * @param name name of the owner of the Pet
      * @param pets array of Pet object
      */
+    private String name;
+    private Pet[] pets;
+
     public PetOwner(String name, Pet... pets) {
+        this.pets = pets;
+        this.name = name;
     }
 
     /**
      * @param pet pet to be added to the composite collection of Pets
      */
     public void addPet(Pet pet) {
+        Pet[] newPets = new Pet[pets.length + 1];
+        for (int i = 0; i < pets.length; i++) {
+            newPets[i] = pets[i];
+        }
+        newPets[newPets.length - 1] = pet;
+        pets = newPets;
+
     }
 
     /**
      * @param pet pet to be removed from the composite collection Pets
      */
     public void removePet(Pet pet) {
-
+        Pet[] newPets = new Pet[pets.length-1];
+        for (int i = 0; i < newPets.length; i++) {
+            if (!newPets[i].equals(pet)) {
+                newPets[i] = this.pets[i];
+            }
+        }
+        this.pets = newPets;
     }
 
     /**
@@ -26,7 +48,10 @@ public class PetOwner {
      * @return true if I own this pet
      */
     public Boolean isOwnerOf(Pet pet) {
-        return null;
+        if (pet.getOwner().getName().equals(this.name)) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -35,8 +60,6 @@ public class PetOwner {
     public Integer getYoungetPetAge() {
         return null;
     }
-
-
 
 
     /**
@@ -58,20 +81,20 @@ public class PetOwner {
      * @return the number of Pet objects stored in this class
      */
     public Integer getNumberOfPets() {
-        return null;
+        return pets.length;
     }
 
     /**
      * @return the name property of the Pet
      */
     public String getName() {
-        return null;
+        return this.name;
     }
 
     /**
      * @return array representation of animals owned by this PetOwner
      */
     public Pet[] getPets() {
-        return null;
+        return this.pets;
     }
 }
