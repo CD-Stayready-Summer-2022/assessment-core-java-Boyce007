@@ -7,7 +7,8 @@ public class StringUtils {
      * @return
      */
     public static String[] getWords(String sentence){
-        return null;
+        String[] words = sentence.split(" ");
+        return words;
     }
 
     /**
@@ -16,7 +17,9 @@ public class StringUtils {
      * @return
      */
     public static String getFirstWord(String sentence){
-        return null;
+        String[] words = getWords(sentence);
+        String firstWord = words[0];
+        return firstWord;
     }
 
     /**
@@ -25,7 +28,9 @@ public class StringUtils {
      * @return
      */
     public static String reverseFirstWord(String sentence){
-        return null;
+        String firstWord = getFirstWord(sentence);
+        String reversedFirstWord = BasicStringUtils.reverse(firstWord);
+        return reversedFirstWord;
     }
 
     /**
@@ -33,7 +38,11 @@ public class StringUtils {
      * @param sentence
      * @return
      */
-    public static String reverseFirstWordThenCamelCase(String sentence){return null;}
+    public static String reverseFirstWordThenCamelCase(String sentence){
+        String reversedFirstWord = reverseFirstWord(sentence);
+        String camelCased = BasicStringUtils.camelCase(reversedFirstWord);
+        return camelCased;
+    }
 
     /**
      * Remove Character at index
@@ -41,5 +50,9 @@ public class StringUtils {
      * @param index
      * @return
      */
-    public static String removeCharacterAtIndex(String str, int index){return null;}
+    public static String removeCharacterAtIndex(String str, int index){
+        StringBuilder builder = new StringBuilder(str);
+        builder.deleteCharAt(index);
+        return builder.toString();
+    }
 }
